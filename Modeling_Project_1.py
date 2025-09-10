@@ -10,6 +10,7 @@ x = np.zeros
 y = np.zeros
 z = np.zeros
 r = np.zeros
+# r is a constant, make it a range or give it a value
 
 
 Dx_t = -3(x - y)
