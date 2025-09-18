@@ -54,12 +54,34 @@ for i in range(1,N):
 
 # ----
 
-plt.plot(x,y)
-plt.title("x vs. y")
+# plt.plot(x,y)
+# plt.title("x vs. y")
 
-plt.plot(x,z)
-plt.title("x vs. z")
+# plt.plot(x,z)
+# plt.title("x vs. z")
 
-ax.plot3D(x, y, z,'.', markersize=0.2,color='red')
+
+#2D plot of x vs y and x vs z on the same graph:
+plt.figure()
+plt.plot(x, y, label = "x vs y")
+plt.title('Lorenz Attractor, Initial Conditions (2,2,2)')
+plt.xlabel='X'
+plt.ylabel='Y or Z'
+plt.legend()
+
+plt.figure()
+plt.plot(x, z, label = "x vs z")
+plt.title('Lorenz Attractor, Initial Conditions (2,2,2)')
+plt.xlabel='X'
+plt.ylabel='Y or Z'
+plt.legend()
+
+
+#3D plot of x vs y vs z:
+ax.plot3D(x, y, z,'.', markersize=0.2,color='red', label = '3D trajectory')
 ax.set_title('Lorenz Attractor, Initial Conditions (2,2,2)')
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Z')
+ax.legend()
 plt.show()
