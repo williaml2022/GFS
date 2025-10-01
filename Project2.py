@@ -25,5 +25,5 @@ f = empty #Coriolis Parameter
 for i in range(1,N):
     dpdx[i]=empty
     dpdy[i]=empty
-    u_g == -1/ρ_o/f * dpdx #geostophic x velocity
-    v_g == 1/ρ_o/f * dpdy #geostrophic y velocity
+    u_g = -1/ρ_o/f * dpdx #geostophic x velocity
+    v_g = 1/ρ_o/f * dpdy #geostrophic y velocity
