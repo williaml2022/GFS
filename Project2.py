@@ -20,10 +20,10 @@ z=np.zeros(N)
 
 dpdx=np.zeros(N)
 dpdy=np.zeros(N)
-f = #
+f = empty #Coriolis Parameter
 
 for i in range(1,N):
     dpdx[i]=empty
     dpdy[i]=empty
-    f*u_g == -1/ρ_o * dpdx
-    f*v_g == 1/ρ_o * dpdy
+    u_g == -1/ρ_o/f * dpdx #geostophic x velocity
+    v_g == 1/ρ_o/f * dpdy #geostrophic y velocity
