@@ -9,15 +9,15 @@ import matplotlib.pyplot as plt
 from scipy.integrate import quad
 from pylab import imshow,gray,show
 from numpy import empty
+import pandas as pd
 
 fig = plt.figure()
 #ax = plt.axes(projection ='3d')
 
 N=10000
-x=np.zeros(N)
-y=np.zeros(N)
-z=np.zeros(N)
-
+x = pd.read_csv("x.csv", header = None).values
+y = pd.read_csv("y.csv", header = None).values
+p = pd.read_csv("p.csv", header = None).values
 dpdx=np.zeros(N)
 dpdy=np.zeros(N)
 f = empty #Coriolis Parameter
