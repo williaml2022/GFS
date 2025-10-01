@@ -23,7 +23,29 @@ u_g = np.zeros_like(p) #geostrophic x velocity
 v_g = np.zeros_like(p) #geostrophic y velocity
 f = 3 #Coriolis Parameter
 
-for i in range(1,N):
-    dpdx, dpdy = np.gradient(p, x[:], y[:])
-    u_g = -1/ρ_o/f * dpdx
-    v_g = 1/ρ_o/f * dpdy
+
+dpdx, dpdy = np.gradient(p, x[:], y[:])
+u_g = -1/ρ_o/f * dpdx
+v_g = 1/ρ_o/f * dpdy
+
+
+cp = plt.contourf(x, y, p, cmap='coolwarm') 
+plt.colorbar(cp, label = 'Pressure (Pa)')
+plt.title('Pressure Field colorized')
+plt.xlabel='X'
+plt.ylabel='Y'
+plt.show()
+
+
+#Part 5
+
+_, du_gdx = np.gradient(v_g, x[:], y[:])
+dv_gdy, _ = np.gradient(u_g, x[:], y[:])
+mass_conservation = du_gdx + dv_gdy
+
+cp = plt.contourf(x, y, mass_conservation, cmap='coolwarm') 
+plt.colorbar(cp, label = 'Pressure (Pa)')
+plt.title('Is Mass Conserved?')
+plt.xlabel='X'
+plt.ylabel='Y'
+plt.show()
