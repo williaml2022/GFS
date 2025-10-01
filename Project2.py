@@ -17,13 +17,13 @@ N=10000
 x = np.loadtxt("x.csv", delimiter = ",") #x.csv
 y = np.loadtxt("y.csv", delimiter = ",") #y.csv
 p = np.loadtxt("p.csv", delimiter = ",") #p.csv
-print(p[0][1])
-# dpdx=np.zeros(N)
-# dpdy=np.zeros(N)
-# f = empty #Coriolis Parameter
+dpdx=np.zeros_like(p)
+dpdy=np.zeros_like(p)
+u_g = np.zeros_like(p) #geostrophic x velocity
+v_g = np.zeros_like(p) #geostrophic y velocity
+f = 3 #Coriolis Parameter
 
-# for i in range(1,N):
-#     dpdx[i]=empty
-#     dpdy[i]=empty
-#     u_g = -1/ρ_o/f * dpdx #geostrophic x velocity
-#     v_g = 1/ρ_o/f * dpdy #geostrophic y velocity
+for i in range(1,N):
+    dpdx, dpdy = np.gradient(p, x[:], y[:])
+    u_g = -1/ρ_o/f * dpdx
+    v_g = 1/ρ_o/f * dpdy
