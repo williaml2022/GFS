@@ -2,6 +2,10 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 
+#QUESTION 1: Create a plot of temperature, salinity, dissolved oxygen, density, and stratification as a function of
+#depth at each of the stations that we occupied during the cruise. In the titles, indicate the station
+#number (i.e. Station One is the first station at which we collected data, etc.).
+
 #z in km
 #S in pss (practical salinity scale)
 #T in celsius
@@ -103,3 +107,8 @@ plt.show()
 #             for S in range(len(S)):
 #                 rho[i] = c + beta*S - alpha*T - gamma*(35 - S)*T
 #                 print('Density at ' + str(z[i]) + 'm is ' + str(rho[i]/1000))
+
+
+#QUESTION 2: For each station, identify the mixed layer, thermocline, halocline, and pycnocline. In a few sentences,
+#comment on the differences in the depths of each of these metrics across the stations. What physical
+#process(es) may be responsible for such variations?
