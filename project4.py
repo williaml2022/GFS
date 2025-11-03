@@ -61,11 +61,13 @@ plt.title('Salinity vs Depth')
 plt.show()
 
 #Disolved Oxygen Depth Plot
-DO = np.array([122, 110.2, 110.1, 110.1])  #Dissolved Oxygen readings from Vandorn bottle at depths of 0m, 2m, 4m, 6m, 8m
+DO_1 = np.array([9, 8.86, 8.85, 8.85])
+DO_2 = np.array([8.84, 8.78, 8.75, 8.75])  #Dissolved Oxygen readings from Vandorn bottle at depths of 0m, 2m, 4m, 6m, 8m
 z_DO = np.array([0.5, 1, 1.5, 2])  #depths in meters for Dissolved Oxygen readings
 
 plt.figure()
-plt.plot(DO, z_DO, marker = 'o')
+plt.plot(DO_1, z_DO, marker = 'o')
+plt.plot(DO_2, z_DO, marker = 'o')
 plt.gca().invert_yaxis()
 plt.xlabel('Dissolved Oxygen ($mg/L$)')
 plt.ylabel('Depth ($km$)')
