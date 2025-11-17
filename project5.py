@@ -35,9 +35,9 @@ def Psi():
     Psi_vals = np.empty(shape = (len(x_vals), len(width)))
     for i in range(len(x_vals)):
         for j in range(len(width)):
-            dT_val = dTau_dy[j] # find the value of dT/dy at the current y value
+            dT_val = dTau_dy[j] # find the value of dTau/dy at the current y value
             # because this dT_val is constant across x, we can take it out of the integral
-            Psi_vals[i, j] = 1 / (rho_b * beta) * dT_val * (x_vals[i] - x_vals[0]) # and just multiply by the x distance
+            Psi_vals[i, j] = 1 / (rho_b * beta) * dT_val * (x_vals[i] - x_vals[-1]) # and just multiply by the x distance
     
     return x_vals, Psi_vals
 
