@@ -19,22 +19,17 @@ def tau_x_function(y_range):
 windStress, width = tau_x_function(y_range)
 
 def Mek():
-    windStress_vecs = np.column_stack((windStress, np.zeros_like(windStress), np.zeros_like(windStress)))
-    mass = np.cross(windStress_vecs, z_hat)/f
+    #windStress_vecs = np.column_stack((windStress, np.zeros_like(windStress), np.zeros_like(windStress)))
+    #mass = np.cross(windStress_vecs, z_hat)/f
 
-<<<<<<< Updated upstream
-    print(mass[:, 1])
+    #print(mass[:, 1])
+    mass = -1*windStress/f
     return mass
-massTransport = Mek() #[:, 1] means only consider y direction
-=======
-    #print(mass)
-    return mass
-massTransport = Mek() #[:, 1] means to take all rows(all width values), and to only use first column (massTransport_y)
->>>>>>> Stashed changes
-massTransport_y = massTransport[:, 1]
+massTransport_y = Mek() #[:, 1] means only consider y direction
+#massTransport_y = massTransport[:, 1]
 
 def Psi():
-    dTxdy = -1 * np.gradient(windStress, width*1000) # this is del cross Tau, which is in z direction
+    dTxdy = -1 * np.gradient(windStress, width) # this is del cross Tau, which is in z direction
     # units of N/m^3
     x_vals = np.arange(0, x_range + 1)
     Psi_vals = np.empty(shape = (len(x_vals), len(width)))
@@ -42,15 +37,15 @@ def Psi():
         for j in range(len(width)):
             dT_val = dTxdy[j] # find the value of dT/dy at the current y value
             # because this dT_val is constant across x, we can take it out of the integral
-            Psi_vals[i, j] = 1 / (rho_b * beta) * dT_val * (x_vals[i] - x_vals[0])*1000 # and just multiply by the x distance
+            Psi_vals[i, j] = 1 / (rho_b * beta) * dT_val * (x_vals[i] - x_vals[0]) # and just multiply by the x distance
     
     return x_vals, Psi_vals
 
 length, Psi_vals = Psi()
-Psi_vals = Psi_vals.T
-X, Y = np.meshgrid(length, width)
+Psi_vals = Psi_vals
+X, Y = np.meshgrid(length, width, indexing='ij')
 V, U = np.gradient(Psi_vals, length, width) # vector components
-U = -1*U
+#U = -1*U
 
 # plot stream function with some [U, V] vectors overlayed
 plt.figure()
