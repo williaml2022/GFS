@@ -22,9 +22,9 @@ def Mek():
     windStress_vecs = np.column_stack((windStress, np.zeros_like(windStress), np.zeros_like(windStress)))
     mass = np.cross(windStress_vecs, z_hat)/f
 
-    print(mass)
+    print(mass[:, 1])
     return mass
-massTransport = Mek() #[:, 1] means to take all rows(all depth values), and to only use first column (massTransport_y)
+massTransport = Mek() #[:, 1] means only consider y direction
 massTransport_y = massTransport[:, 1]
 
 
