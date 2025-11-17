@@ -37,7 +37,7 @@ def Psi():
         for j in range(len(width)):
             dT_val = dTau_dy[j] # find the value of dTau/dy at the current y value
             # because this dT_val is constant across x, we can take it out of the integral
-            Psi_vals[i, j] = 1 / (rho_b * beta) * dT_val * (x_vals[i] - x_vals[-1]) # and just multiply by the x distance
+            Psi_vals[i, -j-1] = 1 / (rho_b * beta) * dT_val * (x_vals[i] - x_vals[-1]) # and just multiply by the x distance
     
     return x_vals, Psi_vals
 
@@ -77,6 +77,7 @@ plt.savefig('P5_stressY.png')
 #plt.show()
 
 
+# TODO: plot this as vectors instead
 #Plot Mass Transport
 plt.figure()
 plt.plot(massTransport_y, width, markersize = 4)
