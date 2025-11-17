@@ -29,13 +29,21 @@ massTransport_y = Mek() #[:, 1] means only consider y direction
 #massTransport_y = massTransport[:, 1]
 
 def Psi():
+<<<<<<< HEAD
     dTau_dy = -1 * np.gradient(windStress, width) # this is del cross Tau, which is in z direction
+=======
+    dTxdy = -1 * np.gradient(windStress, width) # this is del cross Tau, which is in z direction
+>>>>>>> 00bca7e5270056b5cc78ae979eba6f62253060fd
     # units of N/m^3
     x_vals = np.arange(0, x_range + 1)
     Psi_vals = np.empty(shape = (len(x_vals), len(width)))
     for i in range(len(x_vals)):
         for j in range(len(width)):
+<<<<<<< HEAD
             dT_val = dTau_dy[j] # find the value of dT/dy at the current y value
+=======
+            dT_val = dTxdy[j] # find the value of dT/dy at the current y value
+>>>>>>> 00bca7e5270056b5cc78ae979eba6f62253060fd
             # because this dT_val is constant across x, we can take it out of the integral
             Psi_vals[i, j] = 1 / (rho_b * beta) * dT_val * (x_vals[i] - x_vals[0]) # and just multiply by the x distance
     
@@ -45,7 +53,11 @@ length, Psi_vals = Psi()
 Psi_vals = Psi_vals
 X, Y = np.meshgrid(length, width, indexing='ij')
 V, U = np.gradient(Psi_vals, length, width) # vector components
+<<<<<<< HEAD
 U = -U
+=======
+#U = -1*U
+>>>>>>> 00bca7e5270056b5cc78ae979eba6f62253060fd
 
 # plot stream function with some [U, V] vectors overlayed
 plt.figure()
@@ -107,7 +119,7 @@ ax.plot(windStress, np.zeros_like(width), width_z, label = 'Wind Stress')
 ax.plot(np.zeros_like(width), massTransport_y, width_z, label = 'Ekman Transport')
 ax.set_xlabel('Wind Stress ($N/m^2$)')
 ax.set_ylabel('Ekman Transport ($kg/m/s$)')
-ax.set_zlabel('Depth ($km$)')
+ax.set_zlabel('Y ($km$)')
 plt.legend()
 plt.savefig('P5_stressmassY.png')
 #plt.show()
