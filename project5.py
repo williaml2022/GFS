@@ -37,7 +37,7 @@ def Psi():
         for j in range(len(width)):
             dT_val = dTau_dy[j] # find the value of dTau/dy at the current y value
             # because this dT_val is constant across x, we can take it out of the integral
-            Psi_vals[i, -j-1] = 1 / (rho_b * beta) * dT_val * (x_vals[i] - x_vals[-1]) # and just multiply by the x distance
+            Psi_vals[i, j] = 1 / (rho_b * beta) * dT_val * (x_vals[i] - x_vals[-1]) # and just multiply by the x distance
     
     return x_vals, Psi_vals
 
@@ -76,6 +76,20 @@ plt.title('Wind Stress over Y')
 plt.savefig('P5_stressY.png')
 #plt.show()
 
+# plot wind stress with mass transport vectors overlayed
+plt.figure()
+scaling2 = 0.02
+plt.plot(windStress*120, width, markersize = 4)
+Up2 = np.zeros_like(Up)
+V2 = np.vstack([massTransport_y] * len(length))
+Vp2 = V2[::step, ::step]
+plt.quiver(Xp, Yp, scaling2*Up2, scaling2*Vp2)
+
+plt.xlabel('X ($km$)')
+plt.ylabel('Y ($km$)')
+plt.title('Wind Stress (scaled) and Mass Transport (scaled arrows)')
+plt.savefig('P5_stressMassvecY.png')
+plt.show()
 
 # TODO: plot this as vectors instead
 #Plot Mass Transport
