@@ -1,4 +1,3 @@
-from random import uniform
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -6,7 +5,7 @@ import matplotlib.pyplot as plt
 λ2 = 50 #W/m^2/K
 rho = 1000 # Ocean density in kg/m^3
 c_p = 3850 # Specific heat of ocean inJ/kg/K
-h = 100 # Mixed layer depth, assume 100m for project
+h = 100000 # Mixed layer depth, assume 100m for project
 
 
 n = 3652 # days = 10 years
@@ -16,7 +15,6 @@ all_T = []
 
 
 
-#Q = randrange(-300000, 300000)/100000
 
 all_Qnet = []
 
@@ -36,9 +34,9 @@ for run in range(4):
 
 plt.figure(figsize = (15, 6))
 for i in range(4):
-     plt.plot(t, all_T[i], label = 'Simulation' + str(i + 1))
+     plt.plot(t, all_T[i], label = 'Simulation ' + str(i + 1))
 plt.xlabel('Day')
-plt.ylabel('Temperature Anomoly (°C)')
+plt.ylabel('Temperature Anomoly (K)')
 plt.legend()
 plt.grid(True)
 plt.title('Temperature evolution over 10 years\n(4 random Qnet values)')
