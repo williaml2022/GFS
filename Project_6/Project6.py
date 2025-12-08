@@ -16,7 +16,6 @@ all_T = []
 
 
 
-all_Qnet = []
 
 #LOOP OF 4 SIMULATIONS
 for run in range(4):
@@ -25,8 +24,6 @@ for run in range(4):
 
     Qnet = np.random.uniform(-3, 3, n) # Reset Qnet for each simulation
     
-    all_Qnet.append(Qnet) # Save Q data cause why not
-
     for i in range(1, n):
         dT_dt = (Qnet[i] - λ1 * T[i - 1]) / (rho * c_p * h)
         T[i] = T[i - 1] + dt * dT_dt
@@ -36,7 +33,7 @@ plt.figure(figsize = (15, 6))
 for i in range(4):
      plt.plot(t, all_T[i], label = 'Simulation ' + str(i + 1))
 plt.xlabel('Day')
-plt.ylabel('Temperature Anomoly (K)')
+plt.ylabel('Temperature Anomaly (K)')
 plt.legend()
 plt.grid(True)
 plt.title('Temperature evolution over 10 years\n(4 random Qnet values)')
